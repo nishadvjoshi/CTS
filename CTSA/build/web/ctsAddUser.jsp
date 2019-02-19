@@ -1,0 +1,487 @@
+<%-- 
+    Document   : ctsAddUser
+    Created on : 14 Sep, 2017, 6:05:18 PM
+    Author     : Admin
+--%>
+
+<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Sushil Nimbkar & Associate</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Plugin CSS -->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/sb-admin.css" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="css/prism.css">
+        <link rel="stylesheet" href="css/chosen.css">
+
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+
+
+    </head>
+
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+                      <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <a class="navbar-brand" href="#">CTS</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a class="nav-link" href="DashBoardController?action=listDairy">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <span class="nav-link-text">
+                                Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#HomeMenu" data-parent="#exampleAccordion">
+                         <i class="fa fa-fw fa-home"></i>
+                            <span class="nav-link-text">
+                                Home</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="HomeMenu">
+                            <li>
+                                <a href="DashBoardController?action=listDairy">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="ARCILBoardController?action=listDashboard">ARC Dashboard</a>
+                            </li>                              
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                            <!--<i class="fa fa-fw fa-file"></i>-->
+                            <i class="fa  fa-cogs"></i>
+                            <span class="nav-link-text">
+                                Operations</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                            <li>
+                                <a href="AdvocateController?action=listAdvocate">Advocates</a>
+                            </li>
+                            <li>
+                                <a href="UserController?action=listUser">Users</a>
+                            </li>
+                            <li>
+                                <a href="ClientController?action=listClient">Clients</a>
+
+                            </li>
+                            <li>
+                                <a href="CourtController?action=listCourt">Courts</a>
+                            </li>
+                            <li>
+                                <a href="CaseStageController?action=listCaseStage">Case Stage</a>
+                            </li>
+                            <li>
+                                 <a href="CategoryController?action=listCategory">Case Category</a>
+                            </li>                                
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#CaseMenu" data-parent="#exampleAccordion">
+                           <!-- <i class="fa fa-fw fa-file"></i>-->
+                           <i class="fa fa-briefcase"></i>
+                            <span class="nav-link-text">
+                                Case</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="CaseMenu">
+                            <li>
+                                <a href="CaseMasterController?action=listCaseMaster">Case Master</a>
+                            </li>
+                            <li>
+                                <a href="CaseDetailController?action=listCaseDetail">Case Diary</a>
+                            </li>
+                            <li>
+                                <a href="CaseDocumentController?action=listDocument">Case Documents</a>
+                            </li>
+                          <!-- <li>
+                                <a href="CaseStageController?action=listCaseStage">Case Stage</a>
+                            </li>-->
+                            <li>
+                                <a href="CaseTaskController?action=listTaskDetails">Allocate Work</a>
+                            </li>
+                            <li>
+                                <a href="CasePaymentsController?action=listPayments">Case Payments</a>
+                            </li> 
+                            <li>
+                                <a href="CaseExpensesController?action=listExpenses">Case Expenses</a>
+                            </li> 
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-fw fa-link"></i>
+                            <span class="nav-link-text">
+                                Link</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-envelope"></i>
+                            <span class="d-lg-none">Messages
+                                <span class="badge badge-pill badge-primary">12 New</span>
+                            </span>
+                            <span class="new-indicator text-primary d-none d-lg-block">
+                                <i class="fa fa-fw fa-circle"></i>
+                                <span class="number">12</span>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">New Messages:</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <strong>David Miller</strong>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <strong>Jane Smith</strong>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <strong>John Doe</strong>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">
+                                View all messages
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-bell"></i>
+                            <span class="d-lg-none">Alerts
+                                <span class="badge badge-pill badge-warning">6 New</span>
+                            </span>
+                            <span class="new-indicator text-warning d-none d-lg-block">
+                                <i class="fa fa-fw fa-circle"></i>
+                                <span class="number">6</span>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">New Alerts:</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-success">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-up"></i>
+                                        Status Update</strong>
+                                </span>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-danger">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-down"></i>
+                                        Status Update</strong>
+                                </span>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-success">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-up"></i>
+                                        Status Update</strong>
+                                </span>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">
+                                View all alerts
+                            </a>
+                        </div>
+                    </li>
+                      
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-5" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-user-circle"></i>
+                            <span class="d-lg-none"></span>                          
+                        </a>
+                                           
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header"> <% out.println(session.getAttribute("FirstName"));%> </a></h6>
+                            <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="UserProfileController?action=listUserDetail">
+                                <span class="text-success">
+                                    <strong>Profile</strong>
+                                </span>
+                              
+                                </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
+                                <span class="text-danger">
+                                    <strong> Sign Out</strong>
+                                </span>
+                            </a>
+                        </div>
+                 </li>
+                    
+                    
+                                      
+                    <li class="nav-item">
+                        <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+                      
+        <div class="content-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Breadcrumbs -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">My Dashboard</li>
+                </ol>
+
+                <h1>Manage Users</h1>
+                <!-- Example Tables Card -->
+
+                <form role="form" method="POST" class="sign" id="commentForm" action='UserController' name="frmAddUser">
+
+                    <div class="form-group">
+
+                        <p>
+                            <input class="form-control" type="text" readonly="readonly" placeholder="UserID will be allocated by system..." name="userID" value="<c:out value="${user.cmu_ID}" />" />
+                        </p>
+                        <p>
+                            <input class="form-control" type="text" placeholder="Enter valid EmailID" id="cmu_StageName" name="cmu_UserName" data-toggle="tooltip" title="Please Enter UserName"  value="<c:out value="${user.cmu_UserName}" />" required/>
+                        </p>
+                        <p>
+                            <input class="form-control" type="text" placeholder="Enter first name" id="cmu_FirstName" name="cmu_FirstName" data-toggle="tooltip" title="Please Enter First Name" value="<c:out value="${user.cmu_FirstName}" />" required/>
+                        </p>
+                        <p>
+                            <input class="form-control" type="text" placeholder="Enter last name" id="cmu_LastName" name="cmu_LastName" data-toggle="tooltip" title="Please Enter Last Name" value="<c:out value="${user.cmu_LastName}" />" required/>
+                        </p>
+                        <p>                                
+                            <label>Role</label>
+                            <select class="form-control" type="text" placeholder="Enter Role" id="cmu_Role" name="cmu_Role" data-toggle="tooltip" title="Assign Role to the User" value="<c:out value="${user.cmu_Role}" />" required/>
+                        <option>Administrator</option>
+                        <option>SysAdmin</option>
+                        <option>Advocate</option> 
+                        <option>Intern</option>
+                        <option>Operator</option> 
+
+
+                        </select>
+                        </p>
+                        <p>
+                        <td> <label style="width:30%;">User is: </label> </td>
+                        <select class="form-control" type="text" data-placeholder="Select User Type..." data-toggle="tooltip" title="Select Type of User" name ="ctm_UserType"   >
+                            <option value="Associate">Associate</option>
+                            <option value="Client">Client</option>                                    
+                        </select>
+
+                        </p>
+                        <p>  
+                            <label>Associate is: </label> 
+                            <select data-placeholder="Select Advocate..." name ="cmu_AAdvocate" id="cmu_AAdvocate" class="chosen-select" style="width:60%;"  >
+                                <c:forEach items="${advocates}" var="advocate">                                                
+                                    <option value="${advocate.cam_ID}" ${advocate.cam_ID == advocate.cam_ID ? 'selected' : ''}>${advocate.cam_FirstName}</option>
+                                </c:forEach>
+                            </select>       
+                        </p>
+                        <p>
+                            <label>Client is: </label> 
+                            <select data-placeholder="Select Client..." name ="cmu_Client" id="cmu_Client" class="chosen-select" style="width:60%;" >
+                                <c:forEach items="${clients}" var="client">                                                
+                                    <option value="${client.cmc_ID}" ${client.cmc_ID == client.cmc_ID ? 'selected' : ''}>${client.cmc_FirstName}</option>
+                                </c:forEach>
+                            </select>  
+                        </p>
+
+                    </div>
+
+                    <input class="form-control" type="hidden" placeholder="Enter Password" id="cmu_Password" name="cmu_Password" value="<c:out value="${user.cmu_Password}" />" required/> 
+                    <input class="form-control" type="hidden" name="cmu_DeleteFlag" value="<c:out value="false" />" /> 
+                    <input class="form-control" type="hidden" name="cmu_ActiveFlag" value="<c:out value="true" />" /> 
+                    <input class="form-control" type="hidden" name="cmu_CreateDate" value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%= new java.util.Date()%>" />" />                
+                    <input class="form-control" type="hidden" name="cmu_CreateUser" value="<c:out value="1" />" />                 
+                    <input class="form-control" type="hidden" name="cmu_ModifyDate" value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%= new java.util.Date()%>" />" />                
+                    <input class="form-control" type="hidden" name="cmu_ModifyUser" value="<c:out value="1" />" /> 	
+
+
+
+                    <button type="submit" name="SaveDetails" value="SaveDetails" class="btn btn-primary">Submit</button>                            
+                    <button type="reset" class="btn btn-default">Reset Button</button>
+
+                </form>
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /.content-wrapper -->
+
+       <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright &copy; Sushil Nimbkar  & Associate
+                    
+                        <fmt:formatDate var="year" value="${now}" pattern="yyyy" /> (2017- ${year})
+
+</small>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button -->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+
+         <!-- Logout Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="LogOutController?action=logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- CaseStage Modal -->
+        <div class="modal fade" id="casestageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Case Stage</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control" type="text" placeholder="Enter case stage name" id="ccs_StageName" name="ccs_StageName" value="<c:out value="${casestage.ccs_StageName}" />" required/>
+                        <input class="form-control" type="text" placeholder="Enter case stage description" id="ccs_Description" name="ccs_Description" value="<c:out value="${casestage.ccs_Description}" />" required/>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/popper/popper.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="js/sb-admin.min.js"></script>
+
+        <script>$('#casestageModal').on('show.bs.modal', function (e) {
+
+                //get data-id attribute of the clicked element
+                var CaseStageName = $(e.relatedTarget).data('ccs_StageName');
+
+                //populate the textbox
+                $(e.currentTarget).find('input[name="ccs_StageName"]').val(CaseStageName);
+            });</script>
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+        <script src="js/chosen.jquery.js" type="text/javascript"></script>
+        <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': {allow_single_deselect: true},
+                '.chosen-select-no-single': {disable_search_threshold: 10},
+                '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                '.chosen-select-width': {width: "95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+        </script>
+    </body>
+
+</html>

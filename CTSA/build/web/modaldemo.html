@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+       
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+
+
+     
+    </head>
+    <body>
+        <div>TODO write content</div>
+
+        
+        
+<table class="table table-bodered table-striped">
+<tr >
+    <td> <a data-toggle="modal" data-id="1" data-name="sdfsf" data-msg="aeffegcjfmfwwfwe" data-target="#transferModal" href="#">Edit</a></td>
+    <td>1</td>
+    <td>' . $trans['restaurant'] . '</td>
+    <td>' . $trans['korer'] . '</td>
+    <td>' . $trans['dato'] . '</td>
+    <td>' . $trans['tillader'] . '</td>
+ </tr>
+ <tr data-toggle="modal" data-id="2" data-name="asdae" data-msg="zdfvdszv dv" data-target="#transferModal">
+    <td>2</td>
+    <td>' . $trans['restaurant'] . '</td>
+    <td>' . $trans['korer'] . '</td>
+    <td>' . $trans['dato'] . '</td>
+    <td>' . $trans['tillader'] . '</td>
+ </tr>
+ <tr data-toggle="modal" data-id="3" data-name="sdfdf" data-msg="aeffzdvzvZDSvewwfwe" data-target="#transferModal">
+    <td>3</td>
+    <td>' . $trans['restaurant'] . '</td>
+    <td>' . $trans['korer'] . '</td>
+    <td>' . $trans['dato'] . '</td>
+    <td>' . $trans['tillader'] . '</td>
+ </tr>
+</table>
+
+<div class="modal fade" id="transferModal" tabindex="-1" role="dialog" aria-labelledby="transferModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+    <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="recipient-name" class="control-label">Recipient:</label>
+        <input type="text" class="form-control" id="recipient-name">
+      </div>
+        
+          <div class="form-group">
+        <label for="recipient-name" class="control-label">Recipient:</label>
+        <input type="text" class="form-control" id="recipient-name1">
+      </div>
+        
+      <div class="form-group">
+        <label for="message-text" class="control-label">Message:</label>
+        <textarea class="form-control" id="message-text"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Send message</button>
+  </div>
+</div>
+  </div></div>
+
+   <script>
+$('#transferModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('id') // Extract info from data-* attributes
+    var recipient1 = button.data('name') // Extract info from data-* attributes
+      var recipient2 = button.data('msg') // Extract info from data-* attributes
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body  #recipient-name').val(recipient)
+   modal.find('.modal-body #recipient-name1').val(recipient2)
+      modal.find('.modal-body #message-text').val(recipient1)
+});
+      </script>       
+    </body>
+</html>
